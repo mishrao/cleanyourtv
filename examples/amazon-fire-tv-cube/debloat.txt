@@ -1,0 +1,45 @@
+# Amazon Fire TV Cube (3rd gen, AFTGAZL, codename gazelle), Fire OS 7 / Android 9 (SDK 28), build PS7717.5746N.
+# Ads and tracking only: the stock launcher, Home screen, Alexa, Prime Video, Shopping, the Appstore and every
+# preloaded or sideloaded app are left as they are. Entries are taken from the tested Fire OS 7.7.1.7 list in
+# examples/xiaomi-f2-fire-tv-aftma2857f.
+#
+# FIRE OS: DEBLOAT ONLY. com.amazon.tv.launcher keeps HOME and is not touched.
+#
+# Apply:   TV_HOST=<tv ip> tools/disable.sh examples/amazon-fire-tv-cube/debloat.txt
+# Undo:    TV_HOST=<tv ip> tools/restore.sh examples/amazon-fire-tv-cube/debloat.txt com.amazon.tv.launcher
+# Everything is DISABLED for user 0, not uninstalled. Comment out any line you want to keep.
+#
+# Refused by Fire OS 7 on the same platform ("Cannot disable a protected package"), not listed:
+# com.amazon.device.metrics, com.amazon.device.logmanager, com.amazon.device.crashmanager, com.amazon.diode,
+# com.fireos.usagestats.proxy, com.amazon.ftvads.deeplinking.
+#
+# Kept on purpose: the stock launcher, Live TV and the HDMI/input stack (com.droidlogic.tvinput,
+# com.amazon.tv.inputpreference.service), Settings and Quick Settings, the keyboard, remote and Bluetooth
+# pairing, account, sync and security services, the Appstore, Prime Video, Alexa voice, DIAL, Miracast and
+# AirPlay, firmware updates, Shopping, Game Hub, miniTV, Fire TV Channels, Kids, Silk and the tutorials.
+
+# Telemetry and analytics
+com.amazon.tv.acr                        # Automatic Content Recognition; also reads HDMI input
+com.amazon.client.metrics.api
+com.amazon.tv.fw.metrics
+com.amazon.wirelessmetrics.service
+com.amazon.perfcollection
+com.amazon.perfc
+com.amazon.dp.logger
+com.amazon.ceviche
+com.amazon.tv.developer.dataservice
+com.amazon.neo.minerva.logcat
+com.amazon.wifilocker                    # syncs saved Wi-Fi passwords to the Amazon account
+
+# Ads and promotions
+com.amazon.kso.blackbird                 # sponsored banner and row sync
+com.amazon.sneakpeek
+com.amazon.hybridadidservice             # advertising ID
+com.amazon.privacypassservice
+com.amazon.livedeviceservice
+com.amazon.tv.easyupgrade                # upgrade promotions
+com.amazon.providers.contentsupport
+com.amazon.systemnotices
+com.amazon.uxnotification
+# com.amazon.ftv.screensaver             # Amazon screensaver: kept. Disabling it leaves no working screensaver
+#                                        # (com.android.dreams.basic never started) and Settings > Screensaver does nothing
